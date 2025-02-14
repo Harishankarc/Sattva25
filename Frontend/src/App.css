@@ -1,1 +1,30 @@
 @import "tailwindcss";
+
+.bowlby-one-sc-regular {
+    font-family: "Bowlby One SC", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.anton-regular {
+    font-family: "Anton", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+:root{
+    font-family: "Anton";
+}
+@keyframes opening{
+    0%{
+        width: 0vw;
+    }
+    100%{
+        width: 100vw;
+    }
+}
+.openingDiv{
+    animation: opening 0.5s forwards;
+}
+.closingDiv{
+    animation: opening 0.5s reverse forwards;
+}
