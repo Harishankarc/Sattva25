@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 export default function Navbar() {
     const [open, isOpen] = useState(false)
     return (
-        <nav>
+        <nav className="absolute flex justify-between items-center w-full md:pr-10 pr-5">
             <label>
                 <div
                     className="w-20 h-20 cursor-pointer flex flex-col items-center justify-center z-50"
@@ -30,10 +30,10 @@ export default function Navbar() {
                                     <a to="#">Schedule</a>
                                 </li>
                                 <li className="cursor-pointer">
-                                    <a to="#">Arts</a>
+                                    <Link to="/arts">Arts</Link>
                                 </li>
                                 <li className="cursor-pointer">
-                                    <a to="#">Sports</a>
+                                    <Link to="/sports">Sports</Link>
                                 </li>
                             </ul>
                         </div>
@@ -58,7 +58,9 @@ export default function Navbar() {
                         </div>
                     </div>}
             </label>
-
+            <div>
+                <button className="tracking-wide text-md cursor-pointer bg-yellow-500 py-2 px-4 rounded-sm"><a href="#arts">Point Table</a></button>
+            </div>
 
         </nav>
     );
