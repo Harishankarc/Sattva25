@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Arts() {
     const branchPoints = [
-        { branch: "Computer Science", cultural: 150, total: 350 },
+        { branch: "CSE A,CIVIL,EEE,CSE S8", cultural: 150, total: 350 },
         { branch: "Mechanical", cultural: 180, total: 340 },
         { branch: "Electronics", cultural: 140, total: 320 },
         { branch: "Electrical", cultural: 160, total: 300 },
@@ -20,7 +20,6 @@ export default function Arts() {
                                 <tr>
                                     <th className="py-4 px-6 text-left">Branch</th>
                                     <th className="py-4 px-6 text-center">Cultural Points</th>
-                                    <th className="py-4 px-6 text-center">Total Points</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -28,9 +27,6 @@ export default function Arts() {
                                     <tr key={index} className="border-b border-gray-700 bg-zinc-900/50">
                                         <td className="py-4 px-6 font-medium text-gray-300">{branch.branch}</td>
                                         <td className="py-4 px-6 text-center text-gray-300">{branch.cultural}</td>  
-                                        <td className="py-4 px-6 text-center font-bold text-primary text-gray-300">
-                                            {branch.total}
-                                        </td>
                                     </tr>
                                 ))}
                             </tbody>
