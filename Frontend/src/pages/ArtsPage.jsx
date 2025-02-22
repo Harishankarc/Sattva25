@@ -4,6 +4,7 @@ import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import events from "../utils/events";
 import axios from 'axios'
+import { Fade } from "react-awesome-reveal"
 
 export default function ArtsPage() {
   const [selectedCategory, setSelectedCategory] = useState(events[0]);
@@ -21,12 +22,15 @@ export default function ArtsPage() {
     }
   }
 
-  
+
 
   return (
     <div className="bg-black min-h-screen w-screen text-white">
       <Navbar />
+
       <h1 className="text-5xl font-bold text-center pt-20">Arts Events</h1>
+
+
 
 
       <div className="flex justify-center mt-10">
@@ -58,24 +62,25 @@ export default function ArtsPage() {
         </Menu>
       </div>
 
-      <div className="max-w-5xl mx-auto mt-10 px-6 pb-10">
-        <h2 className="text-3xl font-semibold text-yellow-400 mb-4">{selectedCategory.cat}</h2>
-        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-          {selectedCategory.events.map(([code, name], i) => (
-            <li
-              key={i}
-              className="bg-gray-800 p-3 rounded-md shadow-md cursor-pointer hover:bg-gray-700"
-              onClick={() => {
-                setSelectedEvent({ code, name });
-                fetchData(code);
-                setIsModalOpen(true);
-              }}
-            >
-              <span className="font-bold text-blue-300">{code}:</span> {name}
-            </li>
-          ))}
-        </ul>
-      </div>
+      <Fade triggerOnce>
+        <div className="max-w-5xl mx-auto mt-10 px-6 pb-10">
+          <h2 className="text-3xl font-semibold text-yellow-400 mb-4">{selectedCategory.cat}</h2>
+          <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {selectedCategory.events.map(([code, name], i) => (
+              <li
+                key={i}
+                className="bg-gray-800 p-3 rounded-md shadow-md cursor-pointer hover:bg-gray-700"
+                onClick={() => {
+                  setSelectedEvent({ code, name });
+                  fetchData(code);
+                  setIsModalOpen(true);
+                }}
+              >
+                <span className="font-bold text-blue-300">{code}:</span> {name}
+              </li>
+            ))}
+          </ul>
+        </div></Fade>
 
 
       {isModalOpen && selectedEvent && (

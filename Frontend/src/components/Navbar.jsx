@@ -20,15 +20,16 @@ export default function Navbar() {
                     ></div>
                 </div>
                 {open ? <>
-                    <div className={`absolute top-0 h-screen w-screen bg-black  opacity-65 openingDiv z-50`}>
+                    <div className={`absolute top-0 h-screen w-screen bg-black  opacity-90 openingDiv z-50`}>
                         <div className="text-white text-7xl flex flex-col items-center justify-center h-screen">
-                            <ul className="flex flex-col gap-8 z-50">
+                            <ul className="flex flex-col gap-8 z-50 text-center">
                                 <li className="cursor-pointer">
-                                    <a to="#">Events</a>
+                                    <Link to="/">Home</Link>
                                 </li>
                                 <li className="cursor-pointer">
-                                    <a to="#">Schedule</a>
+                                    <Link to="/rulebook">RuleBook</Link>
                                 </li>
+                                
                                 <li className="cursor-pointer">
                                     <Link to="/arts">Arts</Link>
                                 </li>

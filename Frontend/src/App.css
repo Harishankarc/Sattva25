@@ -28,10 +28,15 @@
     font-style: normal;
   }
   
-  
+@font-face {
+    font-family: "josefin";
+    src: url('../src//assets//fonts/JosefinSans-Regular.ttf');
+}
 :root{
-    font-family: "Rowdies";
+    font-family: "josefin";
+    letter-spacing: 2px;
     scroll-behavior: smooth;
+    background-color: black;
 }
 ::-webkit-scrollbar{
     display: none;
