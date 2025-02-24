@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from 'axios';
+import baseUrl from "../utils/url";
 
 export default function Sports() {
     const initialState = [{ position: "", participantCode: "", name: "", categoryCode: "", mark: "", department: "" }];
@@ -24,7 +25,7 @@ export default function Sports() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:3000/addsports", { participants });
+            const response = await axios.post(`${baseUrl}/addsports`, { participants });
             console.log("Server Response:", response.data);
             alert("Data submitted successfully!");
             setParticipants(initialState);

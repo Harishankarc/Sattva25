@@ -1,10 +1,11 @@
 import { useState } from "react";
 import Navbar from "../components/Navbar";
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/20/solid";
+import { BeakerIcon, ChevronDownIcon } from "@heroicons/react/20/solid";
 import events from "../utils/events";
 import axios from 'axios'
 import { Fade } from "react-awesome-reveal"
+import baseUrl from "../utils/url";
 
 export default function ArtsPage() {
   const [selectedCategory, setSelectedCategory] = useState(events[0]);
@@ -14,7 +15,7 @@ export default function ArtsPage() {
 
   async function fetchData(code) {
     try {
-      const response = await axios.get(`http://localhost:3000/getIndividualArts?code=${code}`);
+      const response = await axios.get(`${baseUrl}/getIndividualArts?code=${code}`);
       const sortedData = response.data.sort((a, b) => a.position - b.position);
       setResult(sortedData);
     } catch (e) {

@@ -5,6 +5,7 @@ import { ChevronDownIcon } from "@heroicons/react/20/solid";
 import events from "../utils/s_event";
 import axios from "axios";
 import { Fade } from "react-awesome-reveal"
+import baseUrl from "../utils/url";
 
 export default function SportsPage() {
   const [selectedCategory, setSelectedCategory] = useState(events[0]);
@@ -14,7 +15,7 @@ export default function SportsPage() {
 
   async function fetchData(code) {
     try {
-      const response = await axios.get(`http://localhost:3000/getIndividualSports?code=${code}`);
+      const response = await axios.get(`${baseUrl}/getIndividualSports?code=${code}`);
       const sortedData = response.data.sort((a, b) => a.position - b.position);
       setResult(sortedData);
     } catch (e) {

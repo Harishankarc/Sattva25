@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { Fade, Slide } from 'react-awesome-reveal'
+import baseUrl from "../utils/url";
 
 export default function Sports() {
     const [branchPoints, setBranchPoints] = useState([]);
@@ -9,7 +10,7 @@ export default function Sports() {
     useEffect(() => {
         async function fetchPoints() {
             try {
-                const response = await axios.get("http://localhost:3000/getSportsPointTable");
+                const response = await axios.get(`${baseUrl}/getSportsPointTable`);
                 setBranchPoints(response.data);
                 console.log(response.data);
             } catch (e) {

@@ -7,6 +7,7 @@ import RuleBook from './pages/RulePage'
 
 
 function App() {
+  
 
   return (
     <>
