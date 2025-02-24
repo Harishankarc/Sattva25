@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from 'axios';
-import baseUrl from ".../utils/url";
+import baseUrl from "../utils/url";
 
 export default function Arts() {
     const initialState = [{ position: "", participantCode: "", name: "", categoryCode: "", mark: "", department: "" }];
