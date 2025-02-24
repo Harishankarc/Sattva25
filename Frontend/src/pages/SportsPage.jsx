@@ -77,7 +77,6 @@ export default function SportsPage() {
         </div>
       </Fade>
 
-      {/* Modal */}
       {isModalOpen && selectedEvent && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50 mx-4">
           <div className="bg-white text-black rounded-lg p-6 w-full max-w-lg shadow-xl">

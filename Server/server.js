@@ -9,6 +9,7 @@ app.use(express.json());
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
 const querys=[
     `CREATE TABLE IF NOT EXISTS arts(
         id INTEGER PRIMARY KEY NOT NULL,
@@ -29,7 +30,7 @@ const querys=[
         dept varchar(255),
         position INTEGER DEFAULT 0
     )`
-        ]
+]
 const db = new sqlite.Database("./database.db");
 for(let i=0;i<querys.length;i++){
     db.run(querys[i]);
@@ -176,17 +177,28 @@ app.get('/getSportsPointTable', (req, res) => {
             return res.status(500).json({ error: "Database error" });
         }
 
-        const branches = ['cse', 'ece', 'it', 'civil', 'mca', 'eee'];
-        let branchMarks = {};
+        const branchGroups = {
+            "EEE-Civil": ['eee', 'civil'],
+            "CSE": ['cse'],
+            "ECE": ['ece'],
+            "IT": ['it'],
+            "MCA": ['mca']
+        };
 
-        branches.forEach(branch => {
-            branchMarks[branch.toUpperCase()] = 0;
-        });
+        let branchMarks = {
+            "EEE-Civil": 0,
+            "CSE": 0,
+            "ECE": 0,
+            "IT": 0,
+            "MCA": 0
+        };
 
         rows.forEach(row => {
-            let deptName = row.dept.toUpperCase();
-            if (branchMarks.hasOwnProperty(deptName)) {
-                branchMarks[deptName] = row.total_marks;
+            let deptName = row.dept.toLowerCase();
+            for (let group in branchGroups) {
+                if (branchGroups[group].includes(deptName)) {
+                    branchMarks[group] += row.total_marks;
+                }
             }
         });
 
@@ -201,6 +213,7 @@ app.get('/getSportsPointTable', (req, res) => {
         res.json(modifiedBranches);
     });
 });
+
 
 
 
